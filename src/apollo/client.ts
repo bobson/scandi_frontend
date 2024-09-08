@@ -3,7 +3,7 @@ import { ApolloError } from "@apollo/client/errors";
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "http://3.67.196.100/graphql",
+  uri: "/.netlify/functions/graphql-proxy",
 });
 
 export const fetchGraphQLData = async (query: DocumentNode, variables = {}) => {
