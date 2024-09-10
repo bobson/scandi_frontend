@@ -59,7 +59,7 @@ class ProductListingPage extends Component<ProductListingPageProps> {
     const { products, loading, error } = this.state;
 
     if (loading) {
-      return <Skeleton count={5} />;
+      return <Skeleton height={30} count={5} />;
     }
     if (error) {
       return <ErrorPage message={error} />;

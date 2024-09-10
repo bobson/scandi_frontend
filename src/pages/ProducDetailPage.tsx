@@ -46,7 +46,7 @@ class ProductDetailsPage extends Component<ProductDetailPageProps> {
   render() {
     const { product, loading, error } = this.state;
 
-    if (loading) return <Skeleton count={5} />;
+    if (loading) return <Skeleton height={30} count={5} />;
     if (error) return <ErrorPage message={error} />;
     if (!product) return <div>No Product found</div>;
 
