@@ -43,7 +43,9 @@ class Attributes extends Component<AttributesProps> {
                 disabled={!isInteractive}
                 data-testid={`${dataTestId}-${toKebabCase(
                   attribute.name
-                )}-${toKebabCase(item.value)}${isSelected ? "-selected" : ""}`}
+                )}-${toKebabCase(item.display_value)}${
+                  isSelected ? "-selected" : ""
+                }`}
               >
                 {item.value}
               </button>
@@ -64,7 +66,9 @@ class Attributes extends Component<AttributesProps> {
                 disabled={!isInteractive}
                 data-testid={`${dataTestId}-${toKebabCase(
                   attribute.name
-                )}-${toKebabCase(item.value)}${isSelected ? "-selected" : ""}`}
+                )}-${toKebabCase(item.display_value)}${
+                  isSelected ? "-selected" : ""
+                }`}
               />
             );
           })}
