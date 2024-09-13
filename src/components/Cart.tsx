@@ -1,7 +1,7 @@
 import { Component } from "react";
 
 import Attributes from "./Attributes";
-// import { CartProps } from ".";
+
 import { CartItem } from "../types/types";
 import { RootState } from "../store";
 import { connect } from "react-redux";
@@ -12,8 +12,9 @@ import {
 } from "../store/cartSlice";
 import { fetchGraphQLMutation } from "../apollo/client";
 import { CREATE_ORDER } from "../apollo/queries";
-import Skeleton from "react-loading-skeleton";
+
 import ErrorPage from "./ErrorPage";
+import ProductSkeleton from "./LoadingSkeletons/ProductSkeleton";
 
 export interface CartProps {
   cartItems: CartItem[];
@@ -76,7 +77,7 @@ class Cart extends Component<CartProps> {
 
     const { success, loading, error } = this.state;
 
-    if (loading) return <Skeleton count={5} />;
+    if (loading) return <ProductSkeleton />;
     if (error) return <ErrorPage message={error} />;
 
     return (

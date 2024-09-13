@@ -13,8 +13,9 @@ import PageNotFound from "./components/PageNotFound";
 import { fetchGraphQLData } from "./apollo/client";
 import { GET_CATEGORIES } from "./apollo/queries";
 import { Category } from "./types/types";
-import Skeleton from "react-loading-skeleton";
+
 import ErrorPage from "./components/ErrorPage";
+import NavSkeleton from "./components/LoadingSkeletons/NavSkeleton";
 
 export default class App extends Component {
   state = {
@@ -50,7 +51,7 @@ export default class App extends Component {
     const { categories, loading, error } = this.state;
 
     if (loading) {
-      return <Skeleton count={5} />;
+      return <NavSkeleton />;
     }
 
     if (error) {
@@ -63,7 +64,7 @@ export default class App extends Component {
           <Layout categories={categories}>
             <Switch>
               <Route exact path="/">
-                <Redirect to={`/${categories[0]?.name}`} />
+                <Redirect to={`/all`} />
               </Route>
               <Route
                 exact
@@ -75,6 +76,7 @@ export default class App extends Component {
                     <PageNotFound message="" />
                   )
                 }
+                component={ProductListingPage}
               />
               <Route path="/:category/:id" component={ProductDetailPage} />
             </Switch>

@@ -14,7 +14,7 @@ interface LayoutProps {
 
 class Layout extends Component<LayoutProps> {
   render() {
-    const { isModalOpen, categories, children } = this.props;
+    const { isModalOpen, children, categories } = this.props;
 
     return (
       <div className="min-h-screen flex flex-col items-center m-auto max-w-screen-sm sm:max-w-[90%] md:max-w-[90%] md:max-w-[1200px]">

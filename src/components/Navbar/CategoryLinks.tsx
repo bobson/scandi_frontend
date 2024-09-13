@@ -32,6 +32,7 @@ class CategoryLinks extends Component<Props> {
       this.setState({ activeLink: activeCategory.name });
     }
   };
+
   render() {
     const { categories } = this.props;
 

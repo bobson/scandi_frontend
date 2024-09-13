@@ -9,7 +9,8 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 
 import ProductCard from "../components/ProductCard.tsx";
 import ErrorPage from "../components/ErrorPage.tsx";
-import Skeleton from "react-loading-skeleton";
+
+import Skeleton from "../components/LoadingSkeletons/Skeleton.tsx";
 
 interface MatchParams {
   category: string;
@@ -59,7 +60,7 @@ class ProductListingPage extends Component<ProductListingPageProps> {
     const { products, loading, error } = this.state;
 
     if (loading) {
-      return <Skeleton height={30} count={5} />;
+      return <Skeleton />;
     }
     if (error) {
       return <ErrorPage message={error} />;
