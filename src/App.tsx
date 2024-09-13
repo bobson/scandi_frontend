@@ -13,8 +13,8 @@ import PageNotFound from "./components/PageNotFound";
 import { fetchGraphQLData } from "./apollo/client";
 import { GET_CATEGORIES } from "./apollo/queries";
 import { Category } from "./types/types";
-// import Skeleton from "react-loading-skeleton";
-// import ErrorPage from "./components/ErrorPage";
+import Skeleton from "react-loading-skeleton";
+import ErrorPage from "./components/ErrorPage";
 
 export default class App extends Component {
   state = {
@@ -47,41 +47,43 @@ export default class App extends Component {
   };
 
   render() {
-    const { categories } = this.state;
+    const { categories, loading, error } = this.state;
 
-    // if (loading) {
-    //   return <Skeleton count={5} />;
-    // }
+    if (loading) {
+      return <Skeleton count={5} />;
+    }
 
-    // if (error) {
-    //   return <ErrorPage message={error} />;
-    // }
+    if (error) {
+      return <ErrorPage message={error} />;
+    }
 
-    return (
-      <Router>
-        <Switch>
-          <Layout categories={categories}>
-            <Switch>
-              <Route exact path="/">
-                <Redirect to={`/${categories[0]?.name}`} />
-              </Route>
-              <Route
-                exact
-                path="/:category"
-                children={({ match }) =>
-                  this.validateCategory(match?.params.category) ? (
-                    <ProductListingPage />
-                  ) : (
-                    <PageNotFound message="" />
-                  )
-                }
-              />
-              <Route path="/:category/:id" component={ProductDetailPage} />
-            </Switch>
-          </Layout>
-          <Route path="*" component={PageNotFound} />
-        </Switch>
-      </Router>
-    );
+    if (!categories.length) {
+      return (
+        <Router>
+          <Switch>
+            <Layout categories={categories}>
+              <Switch>
+                <Route exact path="/">
+                  <Redirect to={`/${categories[0]?.name}`} />
+                </Route>
+                <Route
+                  exact
+                  path="/:category"
+                  children={({ match }) =>
+                    this.validateCategory(match?.params.category) ? (
+                      <ProductListingPage />
+                    ) : (
+                      <PageNotFound message="" />
+                    )
+                  }
+                />
+                <Route path="/:category/:id" component={ProductDetailPage} />
+              </Switch>
+            </Layout>
+            <Route path="*" component={PageNotFound} />
+          </Switch>
+        </Router>
+      );
+    }
   }
 }
