@@ -57,33 +57,31 @@ export default class App extends Component {
       return <ErrorPage message={error} />;
     }
 
-    if (!categories.length) {
-      return (
-        <Router>
-          <Switch>
-            <Layout categories={categories}>
-              <Switch>
-                <Route exact path="/">
-                  <Redirect to={`/${categories[0]?.name}`} />
-                </Route>
-                <Route
-                  exact
-                  path="/:category"
-                  children={({ match }) =>
-                    this.validateCategory(match?.params.category) ? (
-                      <ProductListingPage />
-                    ) : (
-                      <PageNotFound message="" />
-                    )
-                  }
-                />
-                <Route path="/:category/:id" component={ProductDetailPage} />
-              </Switch>
-            </Layout>
-            <Route path="*" component={PageNotFound} />
-          </Switch>
-        </Router>
-      );
-    }
+    return (
+      <Router>
+        <Switch>
+          <Layout categories={categories}>
+            <Switch>
+              <Route exact path="/">
+                <Redirect to={`/${categories[0]?.name}`} />
+              </Route>
+              <Route
+                exact
+                path="/:category"
+                children={({ match }) =>
+                  this.validateCategory(match?.params.category) ? (
+                    <ProductListingPage />
+                  ) : (
+                    <PageNotFound message="" />
+                  )
+                }
+              />
+              <Route path="/:category/:id" component={ProductDetailPage} />
+            </Switch>
+          </Layout>
+          <Route path="*" component={PageNotFound} />
+        </Switch>
+      </Router>
+    );
   }
 }

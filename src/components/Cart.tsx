@@ -80,7 +80,10 @@ class Cart extends Component<CartProps> {
     if (error) return <ErrorPage message={error} />;
 
     return (
-      <div className="w-full max-h-[40rem] overflow-auto max-w-sm bg-white p-4">
+      <div
+        className="w-full max-h-[40rem] overflow-auto max-w-sm bg-white p-4"
+        data-testid="cart-overlay"
+      >
         {totalItems > 0 ? (
           <div className="text-lg mb-4">
             <span className="font-bold">My Bag, </span>
