@@ -50,7 +50,7 @@ export default class App extends Component {
     const { categories, loading, error } = this.state;
 
     if (loading) {
-      return <Skeleton height={30} count={5} />;
+      return <Skeleton count={5} />;
     }
 
     if (error) {
