@@ -30,7 +30,7 @@ export interface Attribute {
   items: AttributeItem[];
 }
 
-interface AttributeItem {
+export interface AttributeItem {
   id: number;
   attribute_id: number;
   display_value: string;

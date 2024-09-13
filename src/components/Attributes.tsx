@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Attribute } from "../types/types";
+import { Attribute, AttributeItem } from "../types/types";
 import { toKebabCase } from "../assets/functions";
 
 interface AttributesProps {
@@ -19,6 +19,18 @@ class Attributes extends Component<AttributesProps> {
       isInteractive,
       dataTestId,
     } = this.props;
+
+    function generateDataTestId(
+      attribute: Attribute,
+      item: AttributeItem,
+      isSelected: boolean
+    ) {
+      const kebabCaseAttributeName = toKebabCase(attribute.name);
+      const originalItemValue = item.display_value; // Keep original display value
+      const selected = isSelected ? "-selected" : ""; // Add "-selected" if applicable
+
+      return `${dataTestId}-${kebabCaseAttributeName}-${originalItemValue}${selected}`;
+    }
 
     return attributes?.map((attribute) => (
       <div className="my-2" key={attribute.id}>
@@ -41,11 +53,7 @@ class Attributes extends Component<AttributesProps> {
                     : undefined
                 }
                 disabled={!isInteractive}
-                data-testid={`${dataTestId}-${toKebabCase(
-                  attribute.name
-                )}-${toKebabCase(item.display_value)}${
-                  isSelected ? "-selected" : ""
-                }`}
+                data-testid={generateDataTestId(attribute, item, isSelected)}
               >
                 {item.value}
               </button>
@@ -64,11 +72,7 @@ class Attributes extends Component<AttributesProps> {
                 }
                 style={{ backgroundColor: item.value }}
                 disabled={!isInteractive}
-                data-testid={`${dataTestId}-${toKebabCase(
-                  attribute.name
-                )}-${toKebabCase(item.display_value)}${
-                  isSelected ? "-selected" : ""
-                }`}
+                data-testid={generateDataTestId(attribute, item, isSelected)}
               />
             );
           })}
