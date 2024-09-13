@@ -4,8 +4,8 @@ import { Product } from "../types/types";
 import ProductDetails from "../components/ProductDetails";
 import { GET_PRODUCT_BY_ID } from "../apollo/queries";
 import { withRouter, RouteComponentProps } from "react-router-dom";
-import ErrorPage from "../components/ErrorPage";
-import Skeleton from "react-loading-skeleton";
+// import ErrorPage from "../components/ErrorPage";
+// import Skeleton from "react-loading-skeleton";
 
 interface MatchParams {
   id: string;
@@ -44,10 +44,10 @@ class ProductDetailsPage extends Component<ProductDetailPageProps> {
   }
 
   render() {
-    const { product, loading, error } = this.state;
+    const { product } = this.state;
 
-    if (loading) return <Skeleton height={30} count={5} />;
-    if (error) return <ErrorPage message={error} />;
+    // if (loading) return <Skeleton height={30} count={5} />;
+    // if (error) return <ErrorPage message={error} />;
     if (!product) return <div>No Product found</div>;
 
     return <ProductDetails product={product} />;

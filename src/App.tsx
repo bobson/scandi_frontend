@@ -13,8 +13,8 @@ import PageNotFound from "./components/PageNotFound";
 import { fetchGraphQLData } from "./apollo/client";
 import { GET_CATEGORIES } from "./apollo/queries";
 import { Category } from "./types/types";
-import Skeleton from "react-loading-skeleton";
-import ErrorPage from "./components/ErrorPage";
+// import Skeleton from "react-loading-skeleton";
+// import ErrorPage from "./components/ErrorPage";
 
 export default class App extends Component {
   state = {
@@ -47,15 +47,15 @@ export default class App extends Component {
   };
 
   render() {
-    const { categories, loading, error } = this.state;
+    const { categories } = this.state;
 
-    if (loading) {
-      return <Skeleton count={5} />;
-    }
+    // if (loading) {
+    //   return <Skeleton count={5} />;
+    // }
 
-    if (error) {
-      return <ErrorPage message={error} />;
-    }
+    // if (error) {
+    //   return <ErrorPage message={error} />;
+    // }
 
     return (
       <Router>
