@@ -21,7 +21,7 @@ type ProductListingPageProps = RouteComponentProps<MatchParams>;
 class ProductListingPage extends Component<ProductListingPageProps> {
   state = {
     products: [] as Product[],
-    loading: false,
+    loading: true,
     error: null as string | null,
   };
 
@@ -52,6 +52,7 @@ class ProductListingPage extends Component<ProductListingPageProps> {
     const { category } = this.props.match.params;
     const prevCategory = prevProps.match.params.category;
     if (prevCategory !== category) {
+      this.setState({ loading: true });
       await this.fetchData(category);
     }
   }

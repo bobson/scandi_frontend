@@ -14,7 +14,6 @@ import { fetchGraphQLMutation } from "../apollo/client";
 import { CREATE_ORDER } from "../apollo/queries";
 
 import ErrorPage from "./ErrorPage";
-import ProductSkeleton from "./LoadingSkeletons/ProductSkeleton";
 
 export interface CartProps {
   cartItems: CartItem[];
@@ -77,7 +76,12 @@ class Cart extends Component<CartProps> {
 
     const { success, loading, error } = this.state;
 
-    if (loading) return <ProductSkeleton />;
+    if (loading)
+      return (
+        <div className="w-full max-h-[35rem] overflow-auto max-w-[325px] min-w-[325px] bg-white p-4">
+          <h2 className="font-bold mt-8">Order is creating. Please wait...</h2>
+        </div>
+      );
     if (error) return <ErrorPage message={error} />;
 
     return (

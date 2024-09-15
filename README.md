@@ -22,17 +22,18 @@ To get started with the project, follow these steps:
 
 ### Installation
 
-1. Clone the repository:
+The app is using online server, so you just need to clone the repository:
 
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
-   cd your-repo-name
+```bash
+git clone https://github.com/your-username/your-repo-name.git
 
-   npm install
-   # or
-   yarn install
+cd your-repo-name
 
-   npm run dev
-   # or
-   yarn dev
-   ```
+npm install
+# or
+yarn install
+
+npm run dev
+# or
+yarn dev
+```
