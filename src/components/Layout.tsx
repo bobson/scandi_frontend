@@ -19,7 +19,7 @@ export default class Layout extends Component<LayoutProps> {
           <Navbar categories={categories} />
         </header>
 
-        <main className="flex-grow w-full">
+        <main className="flex-grow w-full mb-20">
           <Modal>
             <Cart />
           </Modal>

@@ -18,10 +18,6 @@ You can view a live demo of the application here: [Demo](https://bright-horse-24
 
 ## Getting Started
 
-To get started with the project, follow these steps:
-
-### Installation
-
 The app is using online server, so you just need to clone the repository:
 
 ```bash

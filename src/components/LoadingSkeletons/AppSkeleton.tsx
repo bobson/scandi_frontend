@@ -5,8 +5,8 @@ import cartIcon from "../../assets/EmptyCart-dark.svg";
 export default class AppSkeleton extends Component {
   render() {
     return (
-      <div className="w-full w-[90%] m-auto flex flex-col mb-20">
-        <div className="h-24 mx-2 flex justify-between items-center px-4">
+      <div className="w-full md:w-[90%] m-auto flex flex-col mb-20">
+        <div className="mx-2 h-20 flex justify-between items-center">
           <div className="flex hidden md:flex space-x-6 animate-pulse">
             <div className="w-16 h-6 bg-gray-300 rounded"></div>
             <div className="w-16 h-6 bg-gray-300 rounded"></div>
@@ -26,11 +26,11 @@ export default class AppSkeleton extends Component {
           {Array.from({ length: 6 }).map((_, index) => (
             <div
               key={index}
-              className="w-full max-w-sm p-4 flex flex-col items-start bg-white shadow-md rounded-lg animate-pulse"
+              className="w-full max-w-sm p-4 flex flex-col items-start bg-white shadow-md rounded-lg animate-pulse h-[444px]"
             >
-              <div className="w-full h-48 bg-gray-200 rounded-lg mb-4"></div>
-              <div className="w-3/4 h-6 bg-gray-200 rounded mb-2"></div>
-              <div className="w-2/4 h-6 bg-gray-200 rounded"></div>
+              <div className="w-full h-5/6 bg-gray-200 rounded-lg mb-4"></div>
+              <div className="w-3/4 h-4 bg-gray-200 rounded mb-2"></div>
+              <div className="w-2/4 h-4 bg-gray-200 rounded"></div>
             </div>
           ))}
         </div>

@@ -33,10 +33,10 @@ class Attributes extends Component<AttributesProps> {
     }
 
     return attributes?.map((attribute) => (
-      <div className="my-2" key={attribute.id}>
-        <h3 className="mb-1">{attribute.name}</h3>
+      <div key={attribute.id}>
+        <h3 className="mt-2">{attribute.name}</h3>
         <div
-          className="flex space-x-2"
+          className="flex"
           data-testid={`${dataTestId}-${toKebabCase(attribute.name)}`}
         >
           {attribute.items.map((item) => {
@@ -44,7 +44,7 @@ class Attributes extends Component<AttributesProps> {
             return attribute.type === "text" ? (
               <button
                 key={item.value}
-                className={`text-sm border w-12 h-8 flex justify-center items-center border-black ${
+                className={`text-sm border mr-2 w-12 h-8 flex justify-center items-center border-black ${
                   isSelected && "bg-black text-white"
                 } transition`}
                 onClick={
@@ -60,7 +60,7 @@ class Attributes extends Component<AttributesProps> {
             ) : (
               <button
                 key={item.value}
-                className={`w-8 h-8 ${
+                className={`w-6 h-6 mr-2 ${
                   isSelected
                     ? "border-2 border-green-600"
                     : "border border-gray-300"

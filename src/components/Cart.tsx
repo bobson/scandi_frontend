@@ -86,7 +86,7 @@ class Cart extends Component<CartProps> {
 
     return (
       <div
-        className="w-full max-h-[35rem] overflow-auto max-w-[325px] min-w-[325px] bg-white p-4"
+        className="w-full max-h-[35rem] overflow-auto max-w-[350px] min-w-[350px] bg-white p-4"
         data-testid="cart-overlay"
       >
         {totalItems > 0 ? (
@@ -124,7 +124,7 @@ class Cart extends Component<CartProps> {
             </div>
 
             {/* Quantity Controls */}
-            <div className="flex flex-col justify-between items-center ">
+            <div className="flex flex-col justify-between items-center">
               <button
                 onClick={() => addItemToCart(cartItem)}
                 className="w-6 h-6 border border-gray-300 flex items-center justify-center"
@@ -143,7 +143,7 @@ class Cart extends Component<CartProps> {
             </div>
 
             {/* Product Image */}
-            <div className="w-1/4 flex items-center">
+            <div className="mx-2 flex items-center">
               <img
                 src={cartItem.item.gallery[0]}
                 alt={cartItem.item.name}

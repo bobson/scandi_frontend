@@ -67,18 +67,20 @@ class ProductCard extends Component<ProductCardProps> {
 
     return (
       <div
-        className="relative p-3 hover:shadow-lg transition-shadow cursor-pointer"
+        className="relative flex flex-col overflow-hidden h-[444px] p-3 hover:shadow-lg transition-shadow max-w-[390px] cursor-pointer"
         onClick={this.handleCardClick}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
         data-testid={`product-${toKebabCase(product.name)}`}
       >
-        <img
-          src={product.gallery[0]}
-          alt={product.name}
-          className="w-full h-64 object-contain"
-        />
-        <div className="mt-4">
+        <div className="h-full h-5/6">
+          <img
+            src={product.gallery[0]}
+            alt={product.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="mt-4 h-1/6">
           <h3 className="text-lg text-gray-600">{product.name}</h3>
           <p className="font-semibold">
             {product.prices.currency_symbol}

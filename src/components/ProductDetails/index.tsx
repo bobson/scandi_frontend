@@ -63,11 +63,11 @@ class ProductDetails extends Component<
 
     const isOutOfStock = !product.inStock;
     return (
-      <div className="flex flex-col md:flex-row md:space-x-4 max-w-screen-xl mx-auto p-4 relative">
+      <div className="flex flex-col md:flex-row md:gap-20 max-w-screen-xl mx-auto p-4 relative">
         {/* Gallery Section */}
         <Gallery gallery={product.gallery} />
         {/* Product Description */}
-        <div className="flex flex-col w-full md:w-5/12 mb-4 md:mb-0">
+        <div className="flex flex-col max-w-[300px] md:w-5/12 mb-4 md:mb-0">
           <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
           <Attributes
             attributes={product.attributes}
