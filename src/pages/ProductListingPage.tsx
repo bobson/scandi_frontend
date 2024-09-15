@@ -10,7 +10,7 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import ProductCard from "../components/ProductCard.tsx";
 import ErrorPage from "../components/ErrorPage.tsx";
 
-import Skeleton from "../components/LoadingSkeletons/Skeleton.tsx";
+import ListingSkeleton from "../components/LoadingSkeletons/ListingSkeleton.tsx";
 
 interface MatchParams {
   category: string;
@@ -21,7 +21,7 @@ type ProductListingPageProps = RouteComponentProps<MatchParams>;
 class ProductListingPage extends Component<ProductListingPageProps> {
   state = {
     products: [] as Product[],
-    loading: true,
+    loading: false,
     error: null as string | null,
   };
 
@@ -60,7 +60,7 @@ class ProductListingPage extends Component<ProductListingPageProps> {
     const { products, loading, error } = this.state;
 
     if (loading) {
-      return <Skeleton />;
+      return <ListingSkeleton />;
     }
     if (error) {
       return <ErrorPage message={error} />;
@@ -69,11 +69,7 @@ class ProductListingPage extends Component<ProductListingPageProps> {
     return (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            // navigate={this.props.history.push}
-          />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     );

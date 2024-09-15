@@ -3,7 +3,7 @@ import { ApolloError } from "@apollo/client/errors";
 
 export const client = new ApolloClient({
   cache: new InMemoryCache(),
-  uri: "https://scandi.lat/graphql",
+  uri: "http://127.0.0.1/graphql",
 });
 
 export const fetchGraphQLData = async (query: DocumentNode, variables = {}) => {

@@ -1,55 +1,57 @@
-import { Component, createRef, ReactNode } from "react";
+import { Component, ReactNode } from "react";
+import { Dialog, DialogBackdrop, DialogPanel } from "@headlessui/react";
+import { toggleModal } from "../store/modalSlice";
+import { RootState } from "../store";
 import { connect } from "react-redux";
-import { closeModal } from "../store/modalSlice";
 
 interface ModalProps {
-  closeModal: () => void;
+  toggleModal: () => void;
+  isModalOpen: boolean;
   children: ReactNode;
 }
 
 class Modal extends Component<ModalProps> {
-  childrenDropdownRef = createRef<HTMLDivElement>();
-  componentDidMount() {
-    document.addEventListener("mousedown", this.handleClickOutside);
-  }
+  state = { open: this.props.isModalOpen };
 
-  componentWillUnmount() {
-    document.removeEventListener("mousedown", this.handleClickOutside);
-  }
-
-  handleClickOutside = (event: MouseEvent) => {
-    if (
-      this.childrenDropdownRef.current &&
-      !this.childrenDropdownRef.current.contains(event.target as Node)
-    ) {
-      const cartButton = document.querySelector('[data-testid="cart-btn"]');
-      if (cartButton && !cartButton.contains(event.target as Node)) {
-        this.props.closeModal();
-      }
+  componentDidUpdate(prevProps: Readonly<ModalProps>): void {
+    if (prevProps.isModalOpen !== this.props.isModalOpen) {
+      this.setState({ open: this.props.isModalOpen });
     }
-  };
+  }
+
   render() {
-    const { closeModal, children } = this.props;
     return (
-      <>
-        <div
-          className="fixed inset-0 top-20 bg-gray-600 bg-opacity-50 flex items-start justify-end z-30"
-          onClick={closeModal}
+      <Dialog
+        open={this.state.open}
+        onClose={this.props.toggleModal}
+        className="relative z-10 overflow-scroll;"
+      >
+        <DialogBackdrop
+          transition
+          className="fixed inset-0 top-20 bg-gray-500 bg-opacity-75 transition-opacity data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
         />
-        <div
-          className="fixed top-20 right-0 sm:right-20 bg-white text-black right-0 border border-gray-200 shadow-lg z-40"
-          ref={this.childrenDropdownRef}
-        >
-          {children}
+
+        <div className="fixed inset-0 z-10 w-screen">
+          <div className="flex items-sart justify-end mt-20 sm:mr-10">
+            <DialogPanel
+              transition
+              className="relative transform overflow-hidden bg-white text-left shadow-xl transition-all  data-[closed]:opacity-0 data-[enter]:duration-200 data-[leave]:duration-200 data-[enter]:ease-out data-[leave]:ease-in"
+            >
+              {this.props.children}
+            </DialogPanel>
+          </div>
         </div>
-      </>
+      </Dialog>
     );
   }
 }
 
-const mapDispatchToProps = {
-  closeModal,
-};
+const mapStateToProps = (state: RootState) => ({
+  isModalOpen: state.modal.isModalOpen,
+});
 
-// eslint-disable-next-line react-refresh/only-export-components
-export default connect(null, mapDispatchToProps)(Modal);
+const ModalStateToProp = connect(mapStateToProps, {
+  toggleModal,
+})(Modal);
+
+export default ModalStateToProp;

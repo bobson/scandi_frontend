@@ -4,7 +4,19 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap'); */
 
+html {
+  padding-right: 0 !important;
+}
+
+html::-webkit-scrollbar {
+ width: 0px; /* Hide scrollbar */
+ background: transparent; /* Optional: makes scrollbar track invisible */
+}
+ 
 body {
   font-family: 'Raleway', sans-serif;
-  overflow: scroll;
+  scrollbar-width: none; /* Firefox */
 }
+
+
+

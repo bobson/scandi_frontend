@@ -82,7 +82,7 @@ class Cart extends Component<CartProps> {
 
     return (
       <div
-        className="w-full max-h-[40rem] overflow-auto max-w-sm bg-white p-4"
+        className="w-full max-h-[35rem] overflow-auto max-w-[325px] min-w-[325px] bg-white p-4"
         data-testid="cart-overlay"
       >
         {totalItems > 0 ? (

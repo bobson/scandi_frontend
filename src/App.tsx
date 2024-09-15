@@ -15,7 +15,7 @@ import { GET_CATEGORIES } from "./apollo/queries";
 import { Category } from "./types/types";
 
 import ErrorPage from "./components/ErrorPage";
-import NavSkeleton from "./components/LoadingSkeletons/NavSkeleton";
+import AppSkeleton from "./components/LoadingSkeletons/AppSkeleton";
 
 export default class App extends Component {
   state = {
@@ -51,7 +51,7 @@ export default class App extends Component {
     const { categories, loading, error } = this.state;
 
     if (loading) {
-      return <NavSkeleton />;
+      return <AppSkeleton />;
     }
 
     if (error) {

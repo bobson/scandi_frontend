@@ -44,8 +44,8 @@ class Attributes extends Component<AttributesProps> {
             return attribute.type === "text" ? (
               <button
                 key={item.value}
-                className={`p-2 border w-16 ${
-                  isSelected ? "border-black font-bold" : "border-gray-300"
+                className={`text-sm border w-12 h-8 flex justify-center items-center border-black ${
+                  isSelected && "bg-black text-white"
                 } transition`}
                 onClick={
                   isInteractive && onAttributeClick
@@ -62,7 +62,7 @@ class Attributes extends Component<AttributesProps> {
                 key={item.value}
                 className={`w-8 h-8 ${
                   isSelected
-                    ? "border-2 border-black"
+                    ? "border-2 border-green-600"
                     : "border border-gray-300"
                 } transition`}
                 onClick={
